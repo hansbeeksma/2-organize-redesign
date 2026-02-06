@@ -10,7 +10,7 @@ import { CtaSection } from "@/components/sections/CtaSection"
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
+      <HeroSection showAssistant />
       <ServicesGrid />
       <StatsBar />
       <TestimonialsSection />
