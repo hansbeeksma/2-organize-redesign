@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { SERVICES } from "@/lib/constants"
 import { staggerContainer, fadeInUp, cardHover } from "@/lib/motion"
 import { ArrowRight, Sparkles, Palette, LayoutGrid } from "lucide-react"
@@ -50,34 +51,48 @@ export function ServicesGrid({ showAll = false }: ServicesGridProps) {
                     initial="rest"
                     whileHover="hover"
                     variants={cardHover}
-                    className="group bg-white rounded-2xl border border-border p-6 lg:p-8 h-full flex flex-col transition-shadow hover:shadow-lg cursor-pointer"
+                    className="group bg-white rounded-2xl border border-border overflow-hidden h-full flex flex-col transition-shadow hover:shadow-lg cursor-pointer"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mb-5">
-                      <Icon className="w-6 h-6 text-brand-600" />
+                    {/* Service Image */}
+                    <div className="relative w-full h-[200px] overflow-hidden">
+                      <Image
+                        src={service.imageUrl}
+                        alt={service.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
                     </div>
 
-                    <h3 className="text-xl font-semibold text-neutral-900 mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-neutral-600 text-sm leading-relaxed mb-4 flex-1">
-                      {service.subtitle}
-                    </p>
+                    {/* Content */}
+                    <div className="p-6 lg:p-8 flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mb-5">
+                        <Icon className="w-6 h-6 text-brand-600" />
+                      </div>
 
-                    <ul className="space-y-2 mb-6">
-                      {service.features.slice(0, 3).map((feature) => (
-                        <li
-                          key={feature}
-                          className="text-sm text-neutral-500 flex items-center gap-2"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                      <h3 className="text-xl font-semibold text-neutral-900 mb-2">
+                        {service.title}
+                      </h3>
+                      <p className="text-neutral-600 text-sm leading-relaxed mb-4 flex-1">
+                        {service.subtitle}
+                      </p>
 
-                    <div className="flex items-center gap-2 text-brand-600 font-medium text-sm group-hover:gap-3 transition-all">
-                      Meer info
-                      <ArrowRight className="w-4 h-4" />
+                      <ul className="space-y-2 mb-6">
+                        {service.features.slice(0, 3).map((feature) => (
+                          <li
+                            key={feature}
+                            className="text-sm text-neutral-500 flex items-center gap-2"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex items-center gap-2 text-brand-600 font-medium text-sm group-hover:gap-3 transition-all">
+                        Meer info
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
                     </div>
                   </motion.div>
                 </Link>

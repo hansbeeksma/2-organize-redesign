@@ -2,6 +2,7 @@
 
 import { use } from "react"
 import { notFound } from "next/navigation"
+import Image from "next/image"
 import { SERVICES } from "@/lib/constants"
 import { HeroSection } from "@/components/sections/HeroSection"
 import { ProcessSteps } from "@/components/sections/ProcessSteps"
@@ -30,6 +31,22 @@ export default function ServiceDetailPage({
         subtitle={service.description}
         compact
       />
+
+      {/* Service Hero Image */}
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden">
+            <Image
+              src={service.imageUrl}
+              alt={service.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 1280px"
+              priority
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Features list */}
       <section className="section-padding section-spacing">

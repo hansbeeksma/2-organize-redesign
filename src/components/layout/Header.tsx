@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { NAV_ITEMS, SITE } from "@/lib/constants"
 import { cn } from "@/lib/utils"
@@ -42,7 +43,13 @@ export function Header() {
               href="/"
               className="text-lg font-bold text-neutral-900"
             >
-              {SITE.name}
+              <Image
+                src="/logo.png"
+                alt="2-Organize"
+                width={140}
+                height={40}
+                className="h-10 w-auto"
+              />
             </Link>
 
             <nav className="flex items-center gap-1">
@@ -92,7 +99,13 @@ export function Header() {
             href="/"
             className="text-lg font-bold text-neutral-900"
           >
-            {SITE.name}
+            <Image
+              src="/logo.png"
+              alt="2-Organize"
+              width={140}
+              height={40}
+              className="h-10 w-auto"
+            />
           </Link>
 
           <button

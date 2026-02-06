@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/Button"
 import { HeroAssistant } from "@/components/sections/HeroAssistant"
@@ -25,11 +26,23 @@ export function HeroSection({
         compact ? "pt-24 pb-16 lg:pt-32 lg:pb-20" : "min-h-svh flex items-center pt-14 lg:pt-16"
       }`}
     >
+      {/* Hero banner background image (non-compact only) */}
+      {!compact && (
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero-banner.webp"
+            alt=""
+            fill
+            className="object-cover opacity-15"
+          />
+        </div>
+      )}
+
       {/* Decorative elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-brand-200/30 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent-200/20 rounded-full blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto section-padding w-full">
+      <div className="relative z-10 max-w-7xl mx-auto section-padding w-full">
         <div className={`${compact ? "" : "py-16 lg:py-24"} ${showAssistant ? "grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center" : ""}`}>
           <div className={showAssistant ? "" : "max-w-2xl"}>
             {!compact && (
